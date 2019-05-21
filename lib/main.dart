@@ -1,0 +1,30 @@
+import 'package:flutter_web/material.dart';
+import 'package:myportfolio/profile_page.dart';
+import 'package:myportfolio/resume.dart';
+
+main() async {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          primaryColorDark: Colors.black,
+          fontFamily: "GoogleSansRegular",
+        ),
+        home: ProfilePage(),
+        onGenerateRoute: (RouteSettings settings) {
+          return MaterialPageRoute(builder: (BuildContext context) => Resume());
+        },
+        onUnknownRoute: (RouteSettings settings) {
+          return MaterialPageRoute(builder: (BuildContext context) => Resume());
+        },
+        navigatorKey: key);
+  }
+}
